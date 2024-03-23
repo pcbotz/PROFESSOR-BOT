@@ -188,6 +188,8 @@ async def start(client, message):
             return await msg.edit_caption(f_caption)
         except: pass
         return await message.reply('NO SUCH FILE EXIST...')
+        await asyncio.sleep(10)
+        await files_.delete()
         
     files = files_[0]
     title = files.file_name
