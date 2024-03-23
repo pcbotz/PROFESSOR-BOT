@@ -188,8 +188,6 @@ async def start(client, message):
             return await msg.edit_caption(f_caption)
         except: pass
         return await message.reply('NO SUCH FILE EXIST...')
-        await asyncio.sleep(10)
-        await files_.delete()
         
     files = files_[0]
     title = files.file_name
@@ -204,6 +202,8 @@ async def start(client, message):
     if f_caption is None:
         f_caption = f"{files.file_name}"
     await client.send_cached_media(chat_id=message.from_user.id, file_id=file_id, caption=f_caption, protect_content=True if pre == 'filep' else False,)
+    await asyncio.sleep(5) 
+        return await files.delete()
                     
 
 
@@ -389,6 +389,5 @@ async def geg_template(client, message):
     settings = await get_settings(grp_id)
     template = settings['template']
     await sts.edit(f"Cᴜʀʀᴇɴᴛ Tᴇᴍᴘʟᴀᴛᴇ Fᴏʀ {title} Iꜱ\n\n{template}")
-
 
 
